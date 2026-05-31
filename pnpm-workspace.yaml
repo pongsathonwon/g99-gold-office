@@ -1,0 +1,10 @@
+packages:
+  - 'packages/*'
+  - 'apps/*'
+allowBuilds:
+  '@parcel/watcher': true   # file-watching native addon (Vite/Vitest)
+  cpu-features: true        # ssh2 optional native perf addon
+  esbuild: true             # bundler native binary (Vite)
+  msgpackr-extract: true    # msgpackr optional native decoder
+  protobufjs: true          # protobuf native parser
+  ssh2: true                # used by mssql for tunnelling

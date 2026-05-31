@@ -1,0 +1,25 @@
+{
+  "name": "@gold/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./inventory": "./dist/inventory/index.js",
+    "./position": "./dist/position/index.js",
+    "./trade": "./dist/trade/index.js",
+    "./transfer": "./dist/transfer/index.js",
+    "./master-data": "./dist/master-data/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "typescript": "*"
+  }
+}

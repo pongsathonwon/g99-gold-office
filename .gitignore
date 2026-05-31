@@ -1,0 +1,30 @@
+node_modules/
+dist/
+.env
+.env.local
+*.local
+
+# pnpm
+.pnpm-store/
+
+# Build outputs
+apps/*/dist/
+packages/*/dist/
+
+# Test outputs
+coverage/
+playwright-report/
+test-results/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
