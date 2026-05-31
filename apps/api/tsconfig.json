@@ -2,7 +2,13 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "../..",
+    "paths": {
+      "@gold/domain": ["../../packages/domain/src/index.ts"],
+      "@gold/domain/*": ["../../packages/domain/src/*/index.ts"],
+      "@gold/contracts": ["../../packages/contracts/src/index.ts"],
+      "@gold/contracts/*": ["../../packages/contracts/src/*/index.ts"]
+    }
   },
   "include": ["src"]
 }

@@ -1,6 +1,6 @@
 import { Context, Effect, Layer } from "effect"
 
-export interface AppConfig {
+export interface AppConfigData {
   port: number
   nodeEnv: "development" | "production" | "test"
   db: {
@@ -16,13 +16,13 @@ export interface AppConfig {
   }
 }
 
-export class AppConfig extends Context.Tag("AppConfig")<AppConfig, AppConfig>() {}
+export class AppConfig extends Context.Tag("AppConfig")<AppConfig, AppConfigData>() {}
 
 export const AppConfigLive = Layer.effect(
   AppConfig,
-  Effect.sync(() => ({
+  Effect.sync((): AppConfigData => ({
     port: Number(process.env["PORT"] ?? 3001),
-    nodeEnv: (process.env["NODE_ENV"] ?? "development") as AppConfig["nodeEnv"],
+    nodeEnv: (process.env["NODE_ENV"] ?? "development") as AppConfigData["nodeEnv"],
     db: {
       host: process.env["DB_HOST"] ?? "localhost",
       port: Number(process.env["DB_PORT"] ?? 5432),

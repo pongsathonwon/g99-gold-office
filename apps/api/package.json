@@ -13,9 +13,9 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@effect/platform": "^0.87.0",
-    "@effect/platform-node": "^0.74.0",
-    "effect": "^3.16.4",
+    "@effect/platform": "^0.96.0",
+    "@effect/platform-node": "^0.106.0",
+    "effect": "^3.21.0",
     "kysely": "^0.27.6",
     "pg": "^8.16.0",
     "mssql": "^11.0.1",

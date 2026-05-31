@@ -1,33 +1,32 @@
 import { Data } from "effect"
-import type { LotId, MutationId, UserId } from "@gold/domain"
-import type { Role } from "@gold/domain"
+import type { LotId, MutationId, UserId, Role } from "@gold/domain"
 
 export class LotNotFoundError extends Data.TaggedError("LotNotFoundError")<{
-  lotId: LotId
-}>() {}
+  readonly lotId: LotId
+}> {}
 
 export class MutationNotFoundError extends Data.TaggedError("MutationNotFoundError")<{
-  mutationId: MutationId
-}>() {}
+  readonly mutationId: MutationId
+}> {}
 
 export class InsufficientStockError extends Data.TaggedError("InsufficientStockError")<{
-  requested: number
-  available: number
-}>() {}
+  readonly requested: number
+  readonly available: number
+}> {}
 
 export class UnauthorizedError extends Data.TaggedError("UnauthorizedError")<{
-  userId: UserId
-  requiredRole: Role
-}>() {}
+  readonly userId: UserId
+  readonly requiredRole: Role
+}> {}
 
 export class InvalidTokenError extends Data.TaggedError("InvalidTokenError")<{
-  reason: string
-}>() {}
+  readonly reason: string
+}> {}
 
 export class PersistenceError extends Data.TaggedError("PersistenceError")<{
-  cause: unknown
-}>() {}
+  readonly cause: unknown
+}> {}
 
 export class ValidationError extends Data.TaggedError("ValidationError")<{
-  message: string
-}>() {}
+  readonly message: string
+}> {}
