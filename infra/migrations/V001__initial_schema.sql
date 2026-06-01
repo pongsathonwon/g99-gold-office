@@ -6,27 +6,28 @@
 -- Users & Auth
 CREATE TABLE users (
     id            CHAR(36)     NOT NULL,
+    empl_code     VARCHAR(10)  NULL,       -- ref EmplInfo.emplCode; NULL until linked
     username      VARCHAR(100) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    role          VARCHAR(20)  NOT NULL,  -- USER_A | USER_B | USER_C | MANAGER
+    role          VARCHAR(20)  NOT NULL,   -- USER_A | USER_B | USER_C | MANAGER
     branch_id     CHAR(36),
     is_active     SMALLINT     NOT NULL DEFAULT 1,
     created_at    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_users PRIMARY KEY (id),
     CONSTRAINT uq_users_username UNIQUE (username),
+    CONSTRAINT uq_users_empl_code UNIQUE (empl_code),
     CONSTRAINT ck_users_role CHECK (role IN ('USER_A', 'USER_B', 'USER_C', 'MANAGER'))
 );
 
 -- Master Data: Branches
+-- distance_tier / transfer_days omitted: transfer duration depends on too many factors to model statically.
 CREATE TABLE branches (
-    id             CHAR(36)     NOT NULL,
-    name           VARCHAR(200) NOT NULL,
-    distance_tier  VARCHAR(10)  NOT NULL,  -- NEAR | MID | FAR
-    transfer_days  SMALLINT     NOT NULL,  -- 3 | 5 | 7
-    is_active      SMALLINT     NOT NULL DEFAULT 1,
+    id          CHAR(36)    NOT NULL,
+    branch_code VARCHAR(4)  NULL,       -- ref BranchInfo.branchCode; NULL for GoldOffice-only branches
+    name        VARCHAR(200) NOT NULL,
+    is_active   SMALLINT    NOT NULL DEFAULT 1,
     CONSTRAINT pk_branches PRIMARY KEY (id),
-    CONSTRAINT ck_branches_tier CHECK (distance_tier IN ('NEAR', 'MID', 'FAR')),
-    CONSTRAINT ck_branches_days CHECK (transfer_days IN (3, 5, 7))
+    CONSTRAINT uq_branches_branch_code UNIQUE (branch_code)
 );
 
 -- Master Data: Suppliers

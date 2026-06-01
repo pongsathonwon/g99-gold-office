@@ -426,7 +426,7 @@ Brand is a **required field** on every gold unit record.
 | MDT-002    | Gold bar sizes                 | 5 / 10 / 20 / 50 GB — all active, all tradeable                                                                      |
 | MDT-003    | Brands                         | ฮั่วเซ็งเฮ็ง (non-fungible flag) / AU / Inter / HQ Smelted / Other                                                   |
 | MDT-004    | GB-to-gram conversion          | 1 GB = 15.244 g — **locked master record**, not editable without controlled change process                           |
-| MDT-005    | Branches                       | Branch ID, name, distance tier (Near/Mid/Far → 3/5/7-day window), active status                                      |
+| MDT-005    | Branches                       | Branch ID, name, active status. Links to legacy `BranchInfo` via `branch_code`. No distance tier or fixed transfer window — duration depends on factors outside the system. |
 | MDT-006    | Suppliers                      | Name, gold types supplied, brand-locked flag, commission rates per product type                                      |
 | MDT-007    | Gold market price              | Manual entry only. Records: price value, date/time, entered by. **Valuation input only — never a cost basis input.** |
 | MDT-NEW-01 | Purity price conversion factor | Default: 1.036. **[PENDING]** — stable (locked master record) or variable (daily manual entry)?                      |

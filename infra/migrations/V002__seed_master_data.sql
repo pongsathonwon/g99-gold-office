@@ -1,11 +1,11 @@
 -- V002: Seed essential master data
 
--- Branches (placeholder IDs — replace with real UUIDs before go-live)
-INSERT INTO branches (id, name, distance_tier, transfer_days, is_active) VALUES
-    ('00000000-0000-0000-0000-000000000001', 'สาขา HQ', 'NEAR', 3, 1),
-    ('00000000-0000-0000-0000-000000000002', 'สาขาใกล้', 'NEAR', 3, 1),
-    ('00000000-0000-0000-0000-000000000003', 'สาขากลาง', 'MID',  5, 1),
-    ('00000000-0000-0000-0000-000000000004', 'สาขาไกล',  'FAR',  7, 1);
+-- Branches — mirrored from BranchInfo; branch_code links back to legacy table
+INSERT INTO branches (id, branch_code, name, is_active) VALUES
+    ('00000000-0000-0000-0000-000000000001', '0',  'G000-สำนักงานใหญ่',  1),
+    ('00000000-0000-0000-0000-000000000002', '1',  'G006-TLBP บางพลี',   1),
+    ('00000000-0000-0000-0000-000000000003', '10', 'G010-MVPN พัฒนาการ', 1),
+    ('00000000-0000-0000-0000-000000000004', '14', 'G014-BCTN ติวานนท์', 1);
 
 -- Suppliers
 INSERT INTO suppliers (id, name, is_brand_locked, is_active) VALUES

@@ -1,6 +1,6 @@
 # GoldOffice — Technical Context
 
-> Last updated: 2026-05-31 (risk answers) · Complements `goldoffice_business_context_revised.md`
+> Last updated: 2026-06-01 · Complements `goldoffice_business_context_revised.md`
 
 ---
 
@@ -296,13 +296,14 @@ Request/response shapes: Zod schemas in `@gold/contracts` package. Both the back
 
 ## 9. Authentication
 
-| Concern              | Decision                                                     |
-| -------------------- | ------------------------------------------------------------ |
-| Mechanism            | JWT with role claim                                          |
-| Roles                | `USER_A \| USER_B \| USER_C \| MANAGER`                      |
-| Role storage         | `users` table in GoldOffice DB (not POS)                     |
-| Backend enforcement  | Effect middleware layer; role injected into Effect `Context` |
-| Frontend enforcement | `<RoleGuard role="USER_A">` wrapping protected routes        |
+| Concern              | Decision                                                                          |
+| -------------------- | --------------------------------------------------------------------------------- |
+| Mechanism            | JWT with role claim                                                               |
+| Roles                | `USER_A \| USER_B \| USER_C \| MANAGER`                                           |
+| Role storage         | `users` table in GoldOffice DB (not POS)                                          |
+| Legacy link          | `users.empl_code` → `EmplInfo.emplCode` (natural key, no FK constraint in prod)   |
+| Backend enforcement  | Effect middleware layer; role injected into Effect `Context`                      |
+| Frontend enforcement | `<RoleGuard role="USER_A">` wrapping protected routes                             |
 
 JWT payload:
 
